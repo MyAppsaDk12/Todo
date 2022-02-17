@@ -1,23 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import {Routes, Route} from 'react-router-dom'
+import HomePage from './pages/HomePage';
+import TodoPage from './pages/TodoPage';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+const router = [
+  {
+    path: '/',
+    element: <HomePage/>,
+    excact: false,
+  },
+  {
+    path: '/todo',
+    element: <TodoPage/>,
+    excact: false,
+  },
+]
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        {router.map(({path, element, excact}) => (<Route key={path} path={path} element={element} excact={excact}/>))}
+      </Routes>
     </div>
   );
 }
